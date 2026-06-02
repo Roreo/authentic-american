@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /_site/
+
+Sitemap: https://authentic-american.com/sitemap.xml

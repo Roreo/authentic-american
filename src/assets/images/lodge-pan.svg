@@ -1,0 +1,7 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  <circle cx="200" cy="150" r="80" fill="#333333" stroke="#666" stroke-width="2"/>
+  <ellipse cx="200" cy="150" rx="75" ry="70" fill="#4a4a4a" stroke="#333" stroke-width="1"/>
+  <path d="M 280 150 Q 320 140 340 160" stroke="#666" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="200" y="280" font-family="Arial" font-size="16" fill="#999" text-anchor="middle">Lodge Cast Iron Pan</text>
+</svg>

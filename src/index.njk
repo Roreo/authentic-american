@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Home
+permalink: /
+---
+
+<section class="home">
+  <h2>Welcome</h2>
+  
+  <p>This is Authentic American, a simple blog about the things that matter. Check out the latest articles below.</p>
+
+  <h2 style="margin-top: 2em;">Recent Articles</h2>
+    
+  {% if collections.articles.length > 0 %}
+    <ul class="articles-list">
+      {% for article in collections.articles %}
+        <li>
+          <a href="{{ article.url }}">{{ article.data.title }}</a>
+          <p class="article-meta">{{ article.data.date | dateFilter('MMMM dd, yyyy') }}</p>
+          {% if article.data.excerpt %}
+            <p>{{ article.data.excerpt }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p><em>No articles yet. Check back soon!</em></p>
+  {% endif %}
+</section>
