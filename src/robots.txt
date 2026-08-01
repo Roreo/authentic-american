@@ -3,4 +3,4 @@ Allow: /
 Disallow: /node_modules/
 Disallow: /_site/
 
-Sitemap: https://authentic-american.com/sitemap.xml
+Sitemap: https://authenticamericangoods.com/sitemap.xml

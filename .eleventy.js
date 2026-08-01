@@ -4,8 +4,9 @@ module.exports = function(eleventyConfig) {
   // Watch for CSS changes
   eleventyConfig.addWatchTarget("src/assets/css/");
   
-  // Copy assets to output
+  // Copy assets and custom domain file to output
   eleventyConfig.addPassthroughCopy("src/assets/");
+  eleventyConfig.addPassthroughCopy("CNAME");
   
   // Setup Markdown
   const md = markdownIt({
