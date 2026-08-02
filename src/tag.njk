@@ -1,0 +1,25 @@
+---
+layout: base.njk
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /tags/{{ tag | slug }}/
+renderData:
+  title: Tag - {{ tag }}
+---
+
+<h2>Articles tagged “{{ tag }}”</h2>
+
+{% set tagArticles = collections.articles | filterByTag(tag) %}
+{% if tagArticles.length > 0 %}
+  <ul class="articles-list">
+    {% for article in tagArticles %}
+      {% include "article-list-item.njk" %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <p><em>No articles found for this tag.</em></p>
+{% endif %}
+
+<p><a href="/articles">← Back to all articles</a></p>

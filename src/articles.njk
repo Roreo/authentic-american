@@ -1,23 +1,47 @@
 ---
 layout: base.njk
 title: Articles
-permalink: /articles/
+pagination:
+  data: collections.articles
+  size: 5
+  alias: articles
+permalink: /articles/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}
 ---
 
 <h2>All Articles</h2>
 
-{% if collections.articles.length > 0 %}
+<div class="search-box">
+  <label for="article-search" class="sr-only">Search articles</label>
+  <input id="article-search" type="search" placeholder="Search articles..." />
+</div>
+
+{% if collections.tagList.length > 0 %}
+  <h3>Browse by tag</h3>
+  <ul class="tag-list">
+    {% for tag in collections.tagList %}
+      <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if pagination.items.length > 0 %}
   <ul class="articles-list">
-    {% for article in collections.articles %}
-      <li>
-        <a href="{{ article.url }}">{{ article.data.title }}</a>
-        <p class="article-meta">{{ article.data.date | dateFilter('MMMM dd, yyyy') }}</p>
-        {% if article.data.excerpt %}
-          <p>{{ article.data.excerpt }}</p>
-        {% endif %}
-      </li>
+    {% for article in pagination.items %}
+      {% include "article-list-item.njk" %}
     {% endfor %}
   </ul>
 {% else %}
   <p><em>No articles yet.</em></p>
+{% endif %}
+
+{% if pagination.href.previous or pagination.href.next %}
+  <nav class="pagination" aria-label="Article pagination">
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">← Previous</a>
+    {% endif %}
+    <span>Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</span>
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Next →</a>
+    {% endif %}
+  </nav>
 {% endif %}

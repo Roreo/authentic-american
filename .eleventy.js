@@ -5,7 +5,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("src/assets/css/");
   
   // Copy assets and custom domain file to output
-  eleventyConfig.addPassthroughCopy("src/assets/");
+  eleventyConfig.addPassthroughCopy("src/assets/css/");
+  eleventyConfig.addPassthroughCopy("src/assets/js/");
+  eleventyConfig.addPassthroughCopy("src/assets/images/");
   eleventyConfig.addPassthroughCopy("CNAME");
   
   // Setup Markdown
@@ -37,6 +39,33 @@ module.exports = function(eleventyConfig) {
     return collection
       .getFilteredByGlob("src/articles/*.md")
       .sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+  });
+
+  eleventyConfig.addCollection("tagList", function (collection) {
+    const tags = new Set();
+
+    collection
+      .getFilteredByGlob("src/articles/*.md")
+      .forEach((item) => {
+        const articleTags = Array.isArray(item.data.tags) ? item.data.tags : [];
+        articleTags.forEach((tag) => tags.add(tag));
+      });
+
+    return Array.from(tags).sort((a, b) => a.localeCompare(b));
+  });
+
+  eleventyConfig.addFilter("filterByTag", function (articles, tag) {
+    return articles.filter((article) => {
+      const articleTags = Array.isArray(article.data.tags) ? article.data.tags : [];
+      return articleTags.includes(tag);
+    });
+  });
+
+  eleventyConfig.addFilter("stripHtml", function (value) {
+    return String(value || '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
   });
   
   return {

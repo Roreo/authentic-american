@@ -1,0 +1,10 @@
+<li>
+  {% if article.data.category %}
+    <p class="category-label">{{ article.data.category }}</p>
+  {% endif %}
+  <a href="{{ article.url }}">{{ article.data.title }}</a>
+  <p class="article-meta">{{ article.data.date | dateFilter('MMMM dd, yyyy') }}</p>
+  {% if article.data.excerpt %}
+    <p>{{ article.data.excerpt }}</p>
+  {% endif %}
+</li>

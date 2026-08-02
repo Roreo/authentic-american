@@ -4,12 +4,22 @@ layout: base.njk
 
 <article>
   <header class="article-header">
+    {% if category %}
+      <p class="category-label">{{ category }}</p>
+    {% endif %}
     <h1>{{ title }}</h1>
     <p class="article-meta">
       <time datetime="{{ date | dateFilter('yyyy-MM-dd') }}">
         {{ date | dateFilter('MMMM dd, yyyy') }}
       </time>
     </p>
+    {% if tags and tags.length > 0 %}
+      <p class="article-tags">
+        {% for tag in tags %}
+          <a href="/tags/{{ tag | slug }}/">{{ tag }}</a>
+        {% endfor %}
+      </p>
+    {% endif %}
   </header>
 
   <div class="article-content">
