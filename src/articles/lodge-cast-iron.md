@@ -1,9 +1,8 @@
 ---
+layout: article.njk
 title: "Lodge Cast Iron"
 date: 2026-07-30
-category: Profile
-slug: lodge-cast-iron
-description: "The oldest cast iron manufacturer in America, still pouring iron in the same Tennessee town where they started in 1896."
+excerpt: "The oldest cast iron manufacturer in America, still pouring iron in the same Tennessee town where they started in 1896."
 ---
 
 A new Lodge skillet costs around $30. A good one will last a century. That math is hard to argue with.
