@@ -4,6 +4,9 @@ title: "Darn Tough: The Vermont Mill That Refused to Outsource"
 date: 2026-07-30
 excerpt: "How a family hosiery mill in Northfield, Vermont stared down the outsourcing era and built a premium sock brand with a lifetime guarantee."
 slug: darn-tough-vermont
+tags:
+  - clothing
+  - outdoors
 ---
 
 There is a sign on the wall of the Cabot Hosiery Mills in Northfield, Vermont. It reads: *"Nobody ever outsourced anything for quality."*

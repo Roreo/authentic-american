@@ -1,0 +1,17 @@
+---
+permalink: /assets/search-data.json
+---
+{
+  "articles": [
+    {% for article in collections.articles %}
+    {
+      "title": {{ article.data.title | dump | safe }},
+      "url": {{ article.url | dump | safe }},
+      "date": {{ article.data.date | dateFilter('MMMM dd, yyyy') | dump | safe }},
+      "excerpt": {{ article.data.excerpt | default('') | dump | safe }},
+      "content": {{ article.templateContent | stripHtml | dump | safe }},
+      "tags": {{ article.data.tags | default([]) | dump | safe }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}

@@ -35,6 +35,20 @@ A simple, static blog built with Eleventy. Web 1.0 inspired design, easily deplo
    ```
 3. Write your content in Markdown
 
+## Admin (write articles from anywhere)
+
+Go to `https://authenticamericangoods.com/admin/` and choose **Sign In Using Access Token**.
+
+1. Create a fine-grained GitHub token at https://github.com/settings/personal-access-tokens/new
+   - Repository access: only `Roreo/authentic-american`
+   - Permissions: **Contents: Read and write** (Metadata: read is added automatically)
+2. Paste it into the admin login. It stays in that browser only; sign out on shared machines.
+
+Saving an article commits a Markdown file to `src/articles/` on `main`, which triggers the deploy workflow.
+Locally, `npm run serve` then `http://localhost:8080/admin/` → **Work with Local Repository** edits files on disk (Chrome/Edge).
+
+"Sign In with GitHub" needs an OAuth helper (e.g. the sveltia-cms-auth Cloudflare Worker) and a `base_url` in `admin/config.yml`; it is not set up.
+
 ## Adding Images
 
 1. Place images in `src/assets/images/`

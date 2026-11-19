@@ -1,0 +1,37 @@
+# Admin screen config (Sveltia CMS). Open /admin/ on the site.
+backend:
+  name: github
+  repo: Roreo/authentic-american
+  branch: main
+  # Login helper for the "Sign In with GitHub" button (sveltia-cms-auth Worker).
+  base_url: https://sveltia-cms-auth.rorypboc.workers.dev
+
+media_folder: src/assets/images
+public_folder: /assets/images
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: src/articles
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Layout, name: layout, widget: hidden, default: article.njk }
+      - { label: Title, name: title, widget: string }
+      - label: Date
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: YYYY-MM-DD
+        time_format: false
+      - { label: Excerpt, name: excerpt, widget: text, hint: "One or two sentences shown in article listings." }
+      - { label: Category, name: category, widget: string, required: false, hint: "e.g. Profile" }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        hint: "Lowercase, one per item, e.g. kitchen"
+      - { label: Body, name: body, widget: markdown }

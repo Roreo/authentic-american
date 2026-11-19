@@ -1,0 +1,11 @@
+{% if collections.tagList.length > 0 %}
+  <nav class="tag-filter" aria-label="Filter articles by tag">
+    <span class="tag-filter-label">Filter by tag:</span>
+    <ul class="tag-list">
+      <li><a href="/articles/"{% if not activeTag %} class="active" aria-current="page"{% endif %}>All</a></li>
+      {% for t in collections.tagList %}
+        <li><a href="/tags/{{ t | slug }}/"{% if t == activeTag %} class="active" aria-current="page"{% endif %}>{{ t }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
